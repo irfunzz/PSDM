@@ -21,6 +21,7 @@
       padding: 0;
       background: url('html5up-astral/assets/images/space-bg-3-1.png') no-repeat center center fixed;
       background-size: cover;
+      background-color: rgba(0, 0, 0, 0.9);
       color: white;
       font-family: 'Star Jedi', sans-serif;
     }
@@ -64,25 +65,7 @@
       border-radius: 10px;
       font-size: 1rem;
       font-family: 'Star Jedi', sans-serif;
-      background: rgba(30, 30, 30, 0.9); /* Background gelap */
-      color: white;
-      text-shadow: 0 0 5px #8a2be2;
-    }
-
-    input::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-      text-shadow: none;
-    }
-
-    select {
-      background: rgba(30, 30, 30, 0.9); /* Background dropdown */
-      color: white;
-      text-shadow: 0 0 5px #8a2be2;
-      border: 1px solid #8a2be2;
-    }
-
-    option {
-      background: rgba(30, 30, 30, 0.9); /* Latar belakang item dropdown */
+      background: rgba(30, 30, 30, 0.9);
       color: white;
       text-shadow: 0 0 5px #8a2be2;
     }
@@ -97,7 +80,6 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      text-shadow: none;
       box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -105,6 +87,16 @@
     button:hover {
       transform: scale(1.1);
       box-shadow: 0 0 30px #9b30ff, 0 0 60px #9b30ff;
+    }
+
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
     }
 
     /* Responsiveness */
@@ -136,6 +128,15 @@
   </style>
 </head>
 <body class="flex justify-center items-center min-h-screen">
+  <!-- Logo di kiri atas -->
+  <div class="absolute top-5 left-5">
+    <img src="html5up-astral/assets/images/logo-bg-2.png" alt="Logo" class="w-20 opacity-80">
+  </div>
+
+  <audio id="background-audio" loop>
+    <source src="html5up-astral/assets/music/starwars-death.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="form-container">
     <h1 class="text-3xl text-center text-white mb-6" style="font-family: 'Star Jhol', sans-serif; text-shadow: 0 0 15px #8a2be2;">
       FATISDA AWARDING FORM
@@ -174,6 +175,14 @@
     </form>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleRedirect(); }"></iframe>
   </div>
+
+  <!-- Tombol kontrol audio -->
+  <div class="absolute top-5 right-5">
+    <button id="play-pause-button" style="color: white; background: black; border: 2px solid white; padding: 10px 20px; font-family: 'Star Jedi'; cursor: pointer;">
+      Play
+    </button>
+  </div>
+
   <script>
     var submitted = false;
     function handleRedirect() {
@@ -184,6 +193,21 @@
         window.location.href = 'sorry.html';
       }
     }
+
+    window.onload = () => {
+      const audio = document.getElementById('background-audio');
+      const playPauseButton = document.getElementById('play-pause-button');
+
+      playPauseButton.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          playPauseButton.textContent = 'Pause';
+        } else {
+          audio.pause();
+          playPauseButton.textContent = 'Play';
+        }
+      });
+    };
   </script>
 </body>
 </html>
