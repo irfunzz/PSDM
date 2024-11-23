@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FATISDA AWARDING</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'Star Jedi';
+      src: url("html5up-astral/assets/images/star_jedi/starjedi/Starjhol.ttf") format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Star Jhol';
+      src: url("html5up-astral/assets/images/star_jedi/starjedi/Starjedi.ttf") format('truetype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('html5up-astral/assets/images/space-bg-3-1.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Star Jedi', sans-serif;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
+      animation: fadeIn 1.5s ease-in-out;
+      text-transform: lowercase;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 1.2rem;
+      color: #8a2be2;
+      text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2;
+    }
+
+    input, select {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: 'Star Jedi', sans-serif;
+      background: rgba(30, 30, 30, 0.9); /* Background gelap */
+      color: white;
+      text-shadow: 0 0 5px #8a2be2;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: none;
+    }
+
+    select {
+      background: rgba(30, 30, 30, 0.9); /* Background dropdown */
+      color: white;
+      text-shadow: 0 0 5px #8a2be2;
+      border: 1px solid #8a2be2;
+    }
+
+    option {
+      background: rgba(30, 30, 30, 0.9); /* Latar belakang item dropdown */
+      color: white;
+      text-shadow: 0 0 5px #8a2be2;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-family: 'Star Jedi', sans-serif;
+      color: black;
+      background: linear-gradient(90deg, #8a2be2, #9b30ff);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-shadow: none;
+      box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #9b30ff, 0 0 60px #9b30ff;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .form-container {
+        margin: 20px;
+        padding: 15px;
+      }
+
+      label, input, select, button {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        margin: 15px;
+        padding: 10px;
+      }
+
+      label, input, select, button {
+        font-size: 0.9rem;
+      }
+
+      button {
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen">
+  <div class="form-container">
+    <h1 class="text-3xl text-center text-white mb-6" style="font-family: 'Star Jhol', sans-serif; text-shadow: 0 0 15px #8a2be2;">
+      FATISDA AWARDING FORM
+    </h1>
+    <form id="awardForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfL8my-PLBes1vXnUasQ1qwrJFpiPjXPE44BRqf-vz-qfK_zA/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="entry.1589151600" placeholder="Masukkan Nama" required>
+
+      <label for="nim">NIM:</label>
+      <input type="text" id="nim" name="entry.93276738" placeholder="Masukkan NIM" required style="text-transform: lowercase;">
+
+      <label for="prodi">Prodi:</label>
+      <select id="prodi" name="entry.475250239" required>
+        <option value="" disabled selected>Pilih Program Studi</option>
+        <option value="INFORMATIKA" style="text-transform: lowercase;">INFORMATIKA</option>
+        <option value="SAINS DATA" style="text-transform: lowercase;">SAINS DATA</option>
+      </select>
+
+      <label for="angkatan">Angkatan:</label>
+      <select id="angkatan" name="entry.1363554089" required>
+        <option value="" disabled selected>Pilih Angkatan</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+      </select>
+
+      <label for="kehadiran">Kehadiran:</label>
+      <select id="kehadiran" name="entry.863713946" required>
+        <option value="" disabled selected>Pilih Kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+
+      <button type="submit" style="margin-top: 25px;">Submit</button>
+    </form>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleRedirect(); }"></iframe>
+  </div>
+  <script>
+    var submitted = false;
+    function handleRedirect() {
+      var kehadiran = document.getElementById('kehadiran').value;
+      if (kehadiran === 'Hadir') {
+        window.location.href = 'thankyou.html';
+      } else {
+        window.location.href = 'sorry.html';
+      }
+    }
+  </script>
+</body>
+</html>

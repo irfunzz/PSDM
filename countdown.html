@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Countdown</title>
+  <!-- Import Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'Star Jedi';
+      src: url("html5up-astral/assets/images/star_jedi/starjedi/Starjhol.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Star jhol';
+        src: url(html5up-astral/assets/images/star_jedi/starjout/Starjout.ttf) format('truetype');  
+    }
+
+    /* Animation for Red text-shadow (during countdown) */
+    @keyframes hologramRed {
+      0%, 100% {
+        text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red;
+      }
+    }
+
+    /* Animation for Blue-Purple text-shadow (after countdown) */
+    @keyframes hologramBlue {
+      0%, 100% {
+        text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 20px blue;
+      }
+      50% {
+        text-shadow: 0 0 10px purple, 0 0 20px purple, 0 0 30px purple;
+      }
+    }
+
+    .lightsaber-button {
+      color: white;
+      background: black;
+      border: 2px solid white;
+      padding: 10px 20px;
+      position: relative;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s;
+    }
+
+    .lightsaber-button:hover {
+      box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff;
+      transform: scale(1.1);
+    }
+
+    .button {
+      color: white;
+      background: black;
+      border: 2px solid white;
+      padding: 10px 20px;
+      font-family: Star Jedi;
+      position: relative;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s;
+    }
+
+    .button:hover {
+      box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff;
+      transform: scale(1.1);
+    }
+
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    .starfield {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('path-to-your-starfield.gif') repeat;
+      animation: starfield 30s linear infinite;
+    }
+
+    .logo {
+      width: 150px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    #main-text {
+      font-family: 'Star jhol', sans-serif;
+      animation: hologramRed 3s infinite;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    /* After countdown ends */
+    .countdown-finished {
+      animation: hologramBlue 3s infinite;
+    }
+  </style>
+</head>
+<body class="bg-black text-[#99BCEC] h-screen flex flex-col justify-center items-center"
+  style="background: url('html5up-astral/assets/images/space-bg-3-1.png') no-repeat center center fixed; background-size: cover;">
+
+  <!-- Starfield background animation -->
+  <div class="starfield"></div>
+
+  <!-- Logo -->
+  <img src="html5up-astral/assets/images/logo-bg-2.png" alt="Star Wars Logo" class="logo">
+
+  <div class="background-overlay"></div>
+
+  <audio id="background-audio" loop>
+    <source src="html5up-astral/assets/music/starwars.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="relative w-full h-full overflow-hidden flex flex-col items-center justify-center">
+    <h1 
+      id="main-text"
+      class="text-center text-4xl md:text-6xl tracking-wider text-white">
+      A new Adventure awaits...
+    </h1>
+    <h2 
+      id="countdown"
+      class="text-center text-5xl md:text-7xl mt-5 text-white"
+      style="font-family: 'Star Jedi', sans-serif; text-shadow: 2px 2px 5px black;">
+      5
+    </h2>
+  </div>
+
+  <div class="absolute top-5 right-5 flex space-x-4">
+    <button id="play-pause-button" class="button">
+      Play
+    </button>
+  </div>
+
+  <div class="absolute bottom-10">
+    <a id="join-button" href="adventure-start.html" class="lightsaber-button hidden" style="font-family: 'Star Jedi', sans-serif; text-transform: lowercase;">
+      Embark on the Journey
+    </a>
+  </div>
+
+  <script>
+    // Countdown Logic
+    const countdownElement = document.getElementById('countdown');
+    const mainTextElement = document.getElementById('main-text');
+    const joinButton = document.getElementById('join-button');
+
+    let countdown = 5; // Start from 5 seconds
+    const interval = setInterval(() => {
+      countdown--;
+
+      // Update the countdown text
+      if (countdown > 0) {
+        countdownElement.textContent = countdown;
+      } else {
+        // Stop the countdown and update the text
+        clearInterval(interval);
+        mainTextElement.textContent = 'it is Time to Begin!';
+        countdownElement.textContent = '';
+        mainTextElement.classList.add('countdown-finished'); // Add new animation after countdown
+        joinButton.classList.remove('hidden'); // Show the button
+      }
+    }, 1000);
+
+    window.onload = () => {
+      const audio = document.getElementById('background-audio');
+      const playPauseButton = document.getElementById('play-pause-button');
+
+      playPauseButton.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          playPauseButton.textContent = 'Pause';
+        } else {
+          audio.pause();
+          playPauseButton.textContent = 'Play';
+        }
+      });
+    };
+  </script>
+</body>
+</html>
