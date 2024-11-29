@@ -43,6 +43,7 @@
       font-family: Star Jedi;
       position: relative;
       transition: box-shadow 0.3s ease-in-out, transform 0.3s;
+      cursor: pointer;
     }
 
     .button:hover {
@@ -97,13 +98,13 @@
     <img src="html5up-astral/assets/images/logo-bg-2.png" alt="Logo" class="opacity-80 w-24">
   </div>
   
-  <!-- Teks utama: ASTRA MAGNIFICIA -->
+  <!-- Teks utama: ASTRA MAGNIFICA -->
   <div class="absolute top-1/3 w-full text-center">
     <h1 
       class="text-center text-5xl md:text-5xl leading-tight tracking-wider text-white"
       style="font-family: 'Star Jedi', sans-serif; text-transform: lowercase; animation: hologram 3s infinite; 
       text-shadow: 0 0 15px #33ccff, 0 0 30px #33ccff;">
-      ASTRA MAGNIFICIA
+      ASTRA MAGNIFICA
     </h1>
   </div>
 
@@ -116,7 +117,7 @@
                     A long time ago in a galaxy far, far away...
                 </p>
                 <p class="mb-6">
-                    The ASTRA MAGNIFICIA Night is here to honor the greatest students
+                    The ASTRA MAGNIFICA Night is here to honor the greatest students
                     who have excelled in their academic and extracurricular pursuits.
                 </p>
                 <p style="font-family: Star Jedi; font-size: 1.5rem; animation: hologram 3s infinite;">
@@ -155,6 +156,15 @@
                 playPauseButton.textContent = 'Play';
             }
         });
+
+        // Countdown Logic
+        const targetDate = new Date('December 7, 2024 00:00:00').getTime();
+        const now = new Date().getTime();
+        const timeUntilTarget = targetDate - now;
+
+        if (timeUntilTarget <= 0) {
+            window.location.href = 'sorry.html';
+        }
     };
 </script>
 </body>
