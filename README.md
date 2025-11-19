@@ -118,5 +118,5 @@ git push origin fitur/nama-fitur
 
 # 5. Buat Pull Request dengan deskripsi jelas
 
-**Divisi PSDM Astra Magnifica 2025**  
+**Divisi PSDM Astra Magnifica 2024**  
 *May the force of human development be with you.* 🌟
